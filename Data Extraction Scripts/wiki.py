@@ -9,7 +9,7 @@ class WikiSpider(scrapy.Spider):
             yield {
                 'text': paragraph.extract(),
             }
-        next_page = response.css('a::attr(href)').get()
+        next_page = response.css('sup a::(href)').get()
         if next_page is not None:
             yield response.follow(next_page, self.parse)
-            
+    
